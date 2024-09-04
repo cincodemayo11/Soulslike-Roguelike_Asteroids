@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3c35vvcsiwej"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_60oq4"]
+[ext_resource type="Texture2D" uid="uid://c4ne3aacc30fw" path="res://sprites/asteroidsplane.png" id="1_kg6nn"]
+
+[node name="player" type="Area2D"]
+position = Vector2(343, 351)
+script = ExtResource("1_60oq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_kg6nn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(4.52995e-06, -12)
+scale = Vector2(1, 2.2)
+polygon = PackedVector2Array(0, -9.09091, -20, 9.09091, 20, 9.09091)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

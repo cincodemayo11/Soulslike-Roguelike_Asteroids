@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b6wtc11730tmi"]
+
+[ext_resource type="FontFile" uid="uid://bquo05fvlpp3u" path="res://themes/KrunchBold.ttf" id="1_p1wjs"]
+
+[resource]
+default_font = ExtResource("1_p1wjs")
+default_font_size = 48

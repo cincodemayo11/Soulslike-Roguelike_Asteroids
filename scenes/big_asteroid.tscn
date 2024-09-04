@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://hikyj4vlm64b"]
+
+[ext_resource type="Texture2D" uid="uid://dvsbqrio3s1rk" path="res://sprites/big_asteroid.png" id="1_20fm3"]
+[ext_resource type="Script" path="res://scripts/big_asteroid.gd" id="1_n3fvd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72nui"]
+radius = 47.0425
+
+[node name="big_asteroid" type="Area2D"]
+script = ExtResource("1_n3fvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_20fm3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_72nui")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

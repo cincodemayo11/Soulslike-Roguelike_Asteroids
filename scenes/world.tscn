@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwic8iqv4ote0"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_ky551"]
+[ext_resource type="PackedScene" uid="uid://b3c35vvcsiwej" path="res://scenes/player.tscn" id="1_st705"]
+[ext_resource type="AudioStream" uid="uid://ytqp5up56773" path="res://sprites/laser1.wav" id="3_cyy5u"]
+[ext_resource type="AudioStream" uid="uid://bnq0m40vt0l5g" path="res://sprites/atari_boom6.wav" id="4_devc1"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_ml75m"]
+[ext_resource type="Theme" uid="uid://b6wtc11730tmi" path="res://themes/krunch_bold.tres" id="6_nvtc5"]
+
+[sub_resource type="GDScript" id="GDScript_iniqn"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_ky551")
+
+[node name="player" parent="." instance=ExtResource("1_st705")]
+position = Vector2(572, 321)
+
+[node name="laser_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cyy5u")
+volume_db = -9.0
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_devc1")
+volume_db = -9.0
+
+[node name="camera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("5_ml75m")
+
+[node name="canvaslayer" type="CanvasLayer" parent="."]
+
+[node name="score_label" type="Label" parent="canvaslayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_top = 24.0
+offset_right = 155.0
+offset_bottom = 58.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme = ExtResource("6_nvtc5")
+text = "Score: 0000"
+horizontal_alignment = 1
+script = SubResource("GDScript_iniqn")
+
+[node name="restart_label" type="Label" parent="canvaslayer"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 20.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="player_dead" from="player" to="." method="_on_player_player_dead"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
