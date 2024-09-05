@@ -6,3 +6,5 @@ Sound by dklon @ www.opengameart.com/content/atari-booms
                  www.opengameart.com/content/laser-fire
 
 Krunch font by NimaType @ https://www.fontspace.com/krunch-font-f19324
+
+Get the executables at https://cincodemayo11.itch.io/asteroids
